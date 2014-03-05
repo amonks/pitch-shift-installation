@@ -84,3 +84,29 @@ You're done! Note: if you try to open up `file:///.../demo/index.html` in your b
 
 You'll have to move `demo/` do a webserver of some kind to get it to run. I'm on OSX, so I like to use OSX's built-in apache server. If you've never used it, you can turn it on by running `sudo apachectl start`, and then it'll automatically serve anything in `/Library/WebServer/Documents` at `http://localhost`.
 
+## but why?
+
+### Why npm?
+
+npm is becoming the de-facto javascript package/dependency manager, for both server-and-client applications, so it's pretty useful to pick up. 
+
+It's a bit different from apt-like package managers you may have used, in that it installs everything *into the working directory* rather than globally. If you install a package with a dependency, it installs the package into ./node_modules/package, and the dependency into ./node_modules/package/node_modules/dependency.
+
+This is super rad if you've ever been to dependency hell: need two libraries that depend on two different versions of the same package? Great! Want to run an old project with a library for which the API has changed? Who cares!
+
+### why browserify?
+
+If you're using npm with a node.js server, all you need to do is make a `packages.json` file that declares what your project depends on, and node automatically makes sure all the proper javascript files get combined into one and served with your application.
+
+If you *aren't* using a node.js server, you can still benefit from npm, you just need to compile all those dependencies manually. 
+
+Thus, Browserify. Declare npm package dependencies within your javascript file using require syntax: `require("npm-package-that-i-want")`. If you then run `browserify ./app.js -o ./bundle.js`, it'll take `./app.js`, `npm-package-that-i-want`, and anything else you've `required`, and paste them all into your `./bundle.js` output file. You can now load all your javascript with a single request. If this excites you, check out `npm-css` also. It does the same thing but with .css files.
+
+protip: run browserify with a `-w` flag to make it watch your `app.js` file for changes and automatically generate as-needed. If *this* excites you, look into `grunt`. It's a build manager targetted for websites: you tell it your build operations, and it runs them when you run `grunt`. Very customizably.
+
+## more resources:
+
+[browserify tutorial](http://engineering.yp.com/post/browserify)
+
+[npm on the client-side tutorial](http://dontkry.com/posts/code/using-npm-on-the-client-side.html)
+
