@@ -2,7 +2,9 @@
 
 The problem with pitch-shift is the examples. The super-bare-bones minimal example they provide doesn't actually play any audio, so it's hard to tell if it works. 
 
-The online demo requires 2 packages that aren't required by pitch-shift itself, so if you try to run its `index.html` locally, it throws mad errors.
+The online demo requires 2 packages that aren't required by pitch-shift itself, so if you try to run its `index.html` locally without installing those first, it throws hella errors.
+
+Here I'll take you through both install processes: how to install the non-functional super-bare-bones minimal pitch-shift example, and how to install the working demo. Here goes.
 
 ## browserify
 
@@ -12,7 +14,7 @@ First you'll need browserify, node normally installs packages into the working d
 
 ## minimal pitch-shift install
 
-### files (minimal/):
+### files (`minimal/`):
 
 `./app.js` (from the Pitch-shift readme):
 
@@ -57,11 +59,11 @@ First you'll need browserify, node normally installs packages into the working d
 
 Pitch-shift is now installed into `./minimal`. If you open up `index.html` you'll notice that it doesn't actually do anything.
 
-## functional demo additions
+## functional demo install
 
 That wasn't very useful, let's try to run the [demo](http://mikolalysenko.github.io/pitch-shift/).
 
-### files (demo/)
+### files (`demo/`)
 
 [`./index.js`](https://github.com/mikolalysenko/pitch-shift/blob/master/example/index.js)
 
